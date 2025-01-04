@@ -17,6 +17,8 @@ gem 'pg', '~> 1.1'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 
+gem 'jquery-rails'
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
