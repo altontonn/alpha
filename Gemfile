@@ -7,7 +7,6 @@ ruby '3.2.2'
 gem 'rails', '~> 7.0.8', '>= 7.0.8.1'
 
 gem 'bcrypt', '~> 3.1.7'
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
