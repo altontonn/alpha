@@ -10,6 +10,10 @@ gem 'bcrypt', '~> 3.1.7'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+
+gem 'bootstrap-will_paginate', '~> 1.0'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
