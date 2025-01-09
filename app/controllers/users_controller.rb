@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   # GET /users or /users.json
   def index
@@ -46,11 +47,8 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:danger] = "User and all articles deleted successfully"
+    redirect_to users_path
   end
 
   private
@@ -65,9 +63,17 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user and !current_user.admin?
         flash[:danger] = "You can only edit your own account"
         redirect_to root_path
       end
     end
+
+    def require_admin
+      if logged_in? and !current_user.admin?
+        flash[:danger] = "Only admin users can perform that action"
+        redirect_to root_path
+      end
+    end
 end
+
