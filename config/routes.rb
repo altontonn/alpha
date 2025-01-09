@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   root 'home#home'
   resources :articles, only: [:index, :create, :edit, :new, :update, :show, :destroy]
   get "signup", to: "users#new"
-
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
 end
